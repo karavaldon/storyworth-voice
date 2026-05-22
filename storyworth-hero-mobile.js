@@ -422,7 +422,7 @@
         tl.to(els.chapterTitle, { opacity: 1, y: 0, duration: 0.45 }, '+=0.15');
         tl.call(() => {
           g.set(els.chapterBody, { opacity: 1 });
-          typeWriter(els.chapterBody, storyText, 22);
+          typeWriter(els.chapterBody, storyText, 12);
         }, [], '+=0.3');
 
         tl.call(() => {
