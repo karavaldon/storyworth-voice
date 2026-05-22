@@ -3,349 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Storyworth Voice — The voice recorder for families</title>
-  <meta name="description" content="Storyworth takes phone calls and turns them into beautifully-written memoirs. Connect your family through storytelling." />
+  <title>Storyworth Voice — Hero Animation Demo</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════════════════
-       PROMO BANNER
-  ═══════════════════════════════════════════════════════ -->
-  <div class="promo-banner">
-    <p class="promo-banner__text">
-      Father's Day sale! Save up to $20 through June 21st &rarr;
-    </p>
-  </div>
+  <div class="stage">
+    <div class="frame">
 
-  <!-- ═══════════════════════════════════════════════════════
-       HEADER / NAV
-  ═══════════════════════════════════════════════════════ -->
-  <header class="site-header">
-    <nav class="nav" aria-label="Main navigation">
-      <a href="/" class="nav__logo" aria-label="Storyworth home">
-        <img class="nav__logo-mark" src="assets/logo-mark.svg" alt="" aria-hidden="true" />
-        <img class="nav__logo-wordmark" src="assets/logo-wordmark.svg" alt="Storyworth" />
-      </a>
-      <div class="nav__actions">
-        <a href="#get-started" class="nav__btn-ghost">Get started</a>
-        <a href="/account" class="nav__user-icon" aria-label="My account">
-          <img src="assets/nav-user-icon.svg" alt="" aria-hidden="true" />
-        </a>
+      <!-- ── Labels ────────────────────────────────────────── -->
+      <p class="label label--talk"  id="lbl-talk">Talk with us</p>
+      <p class="label label--write" id="lbl-write">We write a chapter</p>
+
+      <!-- ── Left: phone call side ─────────────────────────── -->
+      <div class="portrait-wrap" id="portrait">
+        <img src="assets/dad.png" alt="Paul" />
       </div>
-    </nav>
-  </header>
 
-  <main>
-
-    <!-- ═══════════════════════════════════════════════════════
-         HERO
-    ═══════════════════════════════════════════════════════ -->
-    <section class="hero" aria-label="Hero">
-      <div class="container">
-
-        <div class="hero__content">
-          <div class="hero__stars-row">
-            <img src="assets/stars.svg" alt="5 stars" />
-            <p>Read our <a href="#reviews"><span>50,000 five-star reviews</span></a></p>
-          </div>
-          <h1 class="hero__headline">
-            The <em>voice recorder</em> for families
-          </h1>
-          <div class="hero__cta">
-            <p class="hero__sub">
-              Storyworth takes phone calls and turns them into beautifully-written memoirs.
-            </p>
-            <a href="#get-started" class="btn-primary" id="get-started">Get started</a>
-          </div>
-        </div>
-
-        <!-- Illustration: call → chapter -->
-        <div class="hero__illustration">
-
-          <!-- Decorative background circle -->
-          <div class="hero__circle-bg"></div>
-
-          <!-- Left: Phone call -->
-          <div class="hero__call-panel">
-            <p class="hero__call-label">Talk with us</p>
-            <img class="hero__portrait" src="assets/hero-person.png" alt="Portrait of Paul" />
-            <div class="hero__phone-card"></div>
-            <div class="hero__bubble hero__bubble--q">
-              Hey Paul, do you remember the moment you became a dad?
-            </div>
-            <div class="hero__bubble hero__bubble--a1">
-              Oh yes... I remember thinking... boy I have no idea what I'm doing. But I also just knew I'd do anything for her.
-            </div>
-            <div class="hero__bubble hero__bubble--a2">
-              They put her in my arms and I thought... well that's it. That's my whole life right there...
-            </div>
-          </div>
-
-          <!-- Right: Written chapter -->
-          <div class="hero__chapter-panel">
-            <p class="hero__chapter-label">We write a chapter</p>
-            <div class="hero__chapter-card">
-              <div class="hero__chapter-inner">
-                <h2 class="hero__chapter-title">
-                  Do you remember the moment you became a dad?
-                </h2>
-                <div class="hero__chapter-body">
-                  <p>
-                    Oh, yes. I remember thinking — I have no idea what I'm doing. But I also just knew I'd do anything for her. They put her in my arms and I just looked down at her and thought: <em>well, that's it. That's my whole life right there.</em>
-                  </p>
-                  <p>
-                    I'd always heard people say your whole life changes. I thought I understood what that meant. I didn't. You can't, until someone puts a baby in your arms and she opens her eyes and looks at you like you're the only thing in the world.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <!-- /hero__illustration -->
-
+      <div class="phone-card" id="phone-card">
+        <img class="audio-wave" src="assets/audio-wave.svg" alt="" id="audio-wave" />
       </div>
-    </section>
 
-    <!-- ═══════════════════════════════════════════════════════
-         TAGLINE + PRESS LOGOS
-    ═══════════════════════════════════════════════════════ -->
-    <section class="tagline-section" aria-label="Brand tagline and press">
-      <div class="container">
-        <h2 class="tagline-section__headline">
-          Connecting families through storytelling,<br />and making beautiful books along the way.
+      <div class="bubble bubble--q" id="bubble-1">
+        Hey Paul, do you remember the moment you became a dad?
+      </div>
+      <div class="bubble bubble--a" id="bubble-2">
+        Oh yes... I remember thinking... boy I have no idea what I'm doing. But I also just knew I'd do anything for her.
+      </div>
+      <div class="bubble bubble--a" id="bubble-3">
+        They put her in my arms and I thought... well that's it. That's my whole life right there...
+      </div>
+
+      <!-- ── Connector ──────────────────────────────────────── -->
+      <img class="arrow-connector" src="assets/arrow-connector.svg" alt="" id="connector" />
+
+      <!-- ── Right: chapter side ───────────────────────────── -->
+      <div class="chapter-card" id="chapter-card"></div>
+
+      <div class="chapter-page" id="chapter-page">
+        <h2 class="chapter-title" id="chapter-title">
+          Do you remember the moment you became a dad?
         </h2>
-        <div class="press-logos" aria-label="As seen in">
-          <img src="assets/press-nymag-path7.svg" alt="New York Magazine" style="height:21px;" />
-          <img src="assets/press-time.svg" alt="TIME" style="height:21px;" />
-          <img src="assets/press-wirecutter.svg" alt="NYT Wirecutter" style="height:13px;" />
-          <img src="assets/press-cnn.svg" alt="CNN" style="height:19px;" />
-          <img src="assets/press-fastco.svg" alt="Fast Company" style="height:18px;" />
+        <div class="chapter-body" id="chapter-body">
+          <p>Oh, yes. I remember thinking — I have no idea what I'm doing. But I also just knew I'd do anything for her. They put her in my arms and I just looked down at her and thought: <em>well, that's it. That's my whole life right there.</em></p>
+          <p>I'd always heard people say your whole life changes. I thought I understood what that meant. I didn't. You can't, until someone puts a baby in your arms and she opens her eyes and looks at you like you're the only thing in the world.</p>
         </div>
       </div>
-    </section>
 
-    <!-- ═══════════════════════════════════════════════════════
-         PHOTO GRID
-    ═══════════════════════════════════════════════════════ -->
-    <section class="photo-grid" aria-label="Family memories">
-      <div class="photo-grid__inner">
-        <div class="photo-grid__item photo-grid__item--wide">
-          <img src="assets/photo-grid-1.png" alt="Family looking at a Storyworth book" />
-        </div>
-        <div class="photo-grid__item photo-grid__item--narrow">
-          <img src="assets/photo-grid-2.png" alt="Grandparent sharing stories" />
-        </div>
-        <div class="photo-grid__item photo-grid__item--wide">
-          <img src="assets/photo-grid-3.png" alt="Storyworth memoir book" />
-        </div>
-        <div class="photo-grid__item photo-grid__item--narrow photo-grid__item--placeholder" aria-hidden="true"></div>
-      </div>
-    </section>
+    </div><!-- /frame -->
+  </div><!-- /stage -->
 
-    <!-- ═══════════════════════════════════════════════════════
-         HOW IT WORKS
-    ═══════════════════════════════════════════════════════ -->
-    <section class="how-it-works" aria-label="How Storyworth Voice works">
-      <div class="container">
+  <button class="replay-btn" id="replay-btn">↺ Replay</button>
 
-        <div class="how-it-works__header">
-          <p class="how-it-works__eyebrow">How It Works</p>
-          <h2 class="how-it-works__title">35 million stories shared. One simple process.</h2>
-        </div>
-
-        <div class="how-it-works__steps">
-
-          <!-- Step 1 -->
-          <div class="step">
-            <div class="step__image">
-              <img src="assets/step1-person.png" alt="A person receiving a question" />
-            </div>
-            <div class="step__copy">
-              <h3 class="step__title">
-                <span class="step-num">Step 1.</span> Each week we send a question
-              </h3>
-              <p class="step__body">
-                We send weekly questions that will spark memories and inspire them to share stories and photos.
-              </p>
-            </div>
-          </div>
-
-          <!-- Connector -->
-          <div class="step-connector" aria-hidden="true">
-            <img src="assets/step-connector.svg" alt="" />
-          </div>
-
-          <!-- Step 2 -->
-          <div class="step">
-            <div class="step__image" style="background:#f3ece7;">
-              <!-- Illustration placeholder — will be filled from Figma assets -->
-            </div>
-            <div class="step__copy">
-              <h3 class="step__title">
-                <span class="step-num">Step 2.</span> Three ways to record
-              </h3>
-              <p class="step__body">
-                They can have a phone conversation with a loved one or Storyworth, or simply tell their story.
-              </p>
-            </div>
-          </div>
-
-          <!-- Connector -->
-          <div class="step-connector" aria-hidden="true">
-            <img src="assets/step-connector.svg" alt="" />
-          </div>
-
-          <!-- Step 3 -->
-          <div class="step">
-            <div class="step__image" style="background:#f3ece7;">
-              <!-- Illustration placeholder -->
-            </div>
-            <div class="step__copy">
-              <h3 class="step__title">
-                <span class="step-num">Step 3.</span> Print &amp; listen anytime
-              </h3>
-              <p class="step__body">
-                Read, listen, and pass down your keepsake memoir.
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <!-- /how-it-works__steps -->
-
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         REVIEWS
-    ═══════════════════════════════════════════════════════ -->
-    <section class="reviews" id="reviews" aria-label="Customer reviews">
-      <div class="container">
-
-        <div class="reviews__header">
-          <div class="reviews__stars-row">
-            <img src="assets/stars.svg" alt="5 stars" />
-            <a href="https://www.trustpilot.com" class="reviews__stars-link" target="_blank" rel="noopener">
-              Rated Excellent on Trustpilot
-            </a>
-          </div>
-          <h2 class="reviews__title">50,000 five-star reviews and counting</h2>
-        </div>
-
-        <div class="reviews__cards">
-          <div class="review-card">
-            <div class="review-card__stars" aria-label="5 stars">★★★★★</div>
-            <p class="review-card__title">Opened my mind and heart</p>
-            <p class="review-card__body">
-              "This has opened my mind and heart to appreciate how many important life experiences I've missed, and given me the gift of a lifetime."
-            </p>
-            <p class="review-card__author">— Shelbie B. on Trustpilot</p>
-          </div>
-          <div class="review-card">
-            <div class="review-card__stars" aria-label="5 stars">★★★★★</div>
-            <p class="review-card__title">The finished product was amazing!</p>
-            <p class="review-card__body">
-              "I couldn't believe how well I could do this. The people, I have I could not have completed this project without the Storyworth process."
-            </p>
-            <p class="review-card__author">— Blanch on Trustpilot</p>
-          </div>
-          <div class="review-card">
-            <div class="review-card__stars" aria-label="5 stars">★★★★★</div>
-            <p class="review-card__title">User friendly</p>
-            <p class="review-card__body">
-              "The interface is user friendly in every way. Important to our family heirloom."
-            </p>
-            <p class="review-card__author">— KV on Trustpilot</p>
-          </div>
-        </div>
-
-        <div class="reviews__footer">
-          <a href="#" class="btn-outline">Read more reviews</a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         ASK QUESTIONS
-    ═══════════════════════════════════════════════════════ -->
-    <section class="ask-questions" aria-label="Question prompts">
-      <div class="ask-questions__inner">
-
-        <div class="ask-questions__copy">
-          <h2 class="ask-questions__title">Ask questions that open doors</h2>
-          <p class="ask-questions__body">
-            Choose from 500+ prompts, write your own, or add a few facts, and we'll create questions just for you.
-          </p>
-        </div>
-
-        <div class="ask-questions__carousel" role="region" aria-label="Sample questions">
-          <button class="carousel-btn carousel-btn--prev" aria-label="Previous questions">
-            <img src="assets/carousel-arrow-left.svg" alt="" aria-hidden="true" />
-          </button>
-          <div class="question-cards">
-            <div class="question-card">
-              <img class="question-card__bg" src="assets/paper-texture.png" alt="" aria-hidden="true" />
-              <p class="question-card__text">Did you have any pets as a child?</p>
-            </div>
-            <div class="question-card">
-              <img class="question-card__bg" src="assets/paper-texture.png" alt="" aria-hidden="true" />
-              <p class="question-card__text">What was the happiest day of your life?</p>
-            </div>
-          </div>
-          <button class="carousel-btn carousel-btn--next" aria-label="Next questions">
-            <img src="assets/carousel-arrow-right.svg" alt="" aria-hidden="true" />
-          </button>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         FOUNDER STORY
-    ═══════════════════════════════════════════════════════ -->
-    <section class="founder-story" aria-label="About Storyworth">
-      <img class="founder-story__bg" src="assets/cotton-texture.png" alt="" aria-hidden="true" />
-      <div class="founder-story__inner">
-        <h2 class="founder-story__title">Made by our family, for yours</h2>
-        <blockquote class="founder-story__quote">
-          "The idea for Storyworth came from something simple: I wanted my kids to know
-          <a href="#">my dad</a>, their grandfather, better. I started asking him questions about
-          <a href="#">his life</a> and recording his answers, and was amazed by how much I learned.
-          The more stories he shared, the closer we got, and that's an experience I wanted everyone to be able to have."
-        </blockquote>
-        <div class="founder-story__attribution">
-          <img class="founder-story__portrait" src="assets/founder-photo.png" alt="Nick Baum, Founder of Storyworth" />
-          <p class="founder-story__name">Nick Baum, Founder</p>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ═══════════════════════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════════════════════ -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="site-footer__logo">
-        <img src="assets/logo-mark.svg" alt="" aria-hidden="true" style="height:28px;" />
-        <img src="assets/logo-wordmark.svg" alt="Storyworth" style="height:14px;" />
-      </div>
-      <nav class="site-footer__nav" aria-label="Footer navigation">
-        <a href="#">How it works</a>
-        <a href="#">Pricing</a>
-        <a href="#">Gift cards</a>
-        <a href="#">Reviews</a>
-        <a href="#">FAQ</a>
-        <a href="#">Contact</a>
-      </nav>
-      <p class="site-footer__legal">&copy; 2025 Storyworth. All rights reserved.</p>
-    </div>
-  </footer>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
