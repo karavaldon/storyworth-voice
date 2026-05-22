@@ -238,7 +238,7 @@
       left: 17.18px; top: 80.69px;
       width: 224.43px;
       font-family: 'Garamond Premier Pro', 'EB Garamond', Georgia, serif;
-      font-size: 8px;
+      font-size: 10px;
       line-height: 25px;
       color: #042a21;
     }
