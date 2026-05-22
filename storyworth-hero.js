@@ -379,9 +379,9 @@
         tl.to(els.phoneCard,    { opacity: 1, y: 0, duration: 0.5 }, '+=0.3');
         tl.to(els.portrait,     { opacity: 1, y: 0, duration: 0.5 }, '-=0.35');
         tl.to(els.daughter,     { opacity: 1, y: 0, duration: 0.5 }, '<+=0.05');
-        tl.to(els.bubble1,      { opacity: 1, y: 0, duration: 0.4 }, '+=0.35');
-        tl.to(els.bubble2,      { opacity: 1, y: 0, duration: 0.4 }, '+=0.5');
-        tl.to(els.bubble3,      { opacity: 1, y: 0, duration: 0.4 }, '+=0.5');
+        tl.to(els.bubble1,      { opacity: 1, y: 0, duration: 0.25 }, '+=0.2');
+        tl.to(els.bubble2,      { opacity: 1, y: 0, duration: 0.25 }, '+=0.3');
+        tl.to(els.bubble3,      { opacity: 1, y: 0, duration: 0.25 }, '+=0.3');
         tl.to(els.connector,    { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.5)' }, '+=0.3');
         tl.to(els.lblWrite,     { opacity: 1, duration: 0.35 }, '-=0.1');
         tl.to(els.chapterCard,  { opacity: 1, x: 0, duration: 0.55 }, '-=0.2');

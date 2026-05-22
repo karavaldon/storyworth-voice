@@ -123,9 +123,9 @@ function buildTimeline() {
   tl.to(els.daughter,  { opacity: 1, y: 0, duration: 0.5 }, '<+=0.05');
 
   // 6. Chat 1 → 2 → 3
-  tl.to(els.bubble1, { opacity: 1, y: 0, duration: 0.4 }, '+=0.35');
-  tl.to(els.bubble2, { opacity: 1, y: 0, duration: 0.4 }, '+=0.5');
-  tl.to(els.bubble3, { opacity: 1, y: 0, duration: 0.4 }, '+=0.5');
+  tl.to(els.bubble1, { opacity: 1, y: 0, duration: 0.25 }, '+=0.2');
+  tl.to(els.bubble2, { opacity: 1, y: 0, duration: 0.25 }, '+=0.3');
+  tl.to(els.bubble3, { opacity: 1, y: 0, duration: 0.25 }, '+=0.3');
 
   // 7. Arrow connector
   tl.to(els.connector, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.5)' }, '+=0.3');
