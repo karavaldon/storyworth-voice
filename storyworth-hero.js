@@ -23,11 +23,11 @@
 
   const storyText = [
     [
-      { text: 'Oh, yes. I remember thinking — I have no idea what I’m doing. But I also just knew I’d do anything for her. They put her in my arms and I just looked down at her and thought: ' },
-      { text: 'well, that’s it. That’s my whole life right there.', em: true },
+      { text: "Oh, yes. I remember thinking — I have no idea what I’m doing. But I also just knew I’d do anything for her. They put her in my arms and I just looked down at her and thought: " },
+      { text: "well, that’s it. That’s my whole life right there.", em: true },
     ],
     [
-      { text: 'I’d always heard people say your whole life changes. I thought I understood what that meant. I didn’t. You can’t, until someone puts a baby in your arms and she opens her eyes and looks at you like you’re the only thing in the world.' },
+      { text: "I’d always heard people say your whole life changes. I thought I understood what that meant. I didn’t. You can’t, until someone puts a baby in your arms and she opens her eyes and looks at you like you’re the only thing in the world." },
     ],
   ];
 
