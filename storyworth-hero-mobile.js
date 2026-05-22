@@ -31,7 +31,7 @@
     ],
   ];
 
-  function typeWriter(container, paragraphs, msPerChar) {
+  function typeWriter(container, paragraphs, msPerChar, onComplete) {
     container.innerHTML = '';
     const chars = [];
     paragraphs.forEach((segs, pi) => {
@@ -49,7 +49,7 @@
     currentP.appendChild(cursor);
 
     function tick() {
-      if (i >= chars.length) return;
+      if (i >= chars.length) { if (onComplete) onComplete(); return; }
       const item = chars[i++];
       if (item.newPara) {
         currentP = document.createElement('p');
@@ -422,13 +422,13 @@
         tl.to(els.chapterTitle, { opacity: 1, y: 0, duration: 0.45 }, '+=0.15');
         tl.call(() => {
           g.set(els.chapterBody, { opacity: 1 });
-          typeWriter(els.chapterBody, storyText, 12);
+          typeWriter(els.chapterBody, storyText, 12, () => {
+            setTimeout(() => {
+              this._tl.kill();
+              this._tl = build();
+            }, 4000);
+          });
         }, [], '+=0.3');
-
-        tl.call(() => {
-          this._tl.kill();
-          this._tl = build();
-        }, [], '+=4');
 
         return tl;
       };
