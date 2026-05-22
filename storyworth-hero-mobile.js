@@ -411,7 +411,7 @@
         tl.to(els.bubble3,   { opacity: 1, y: 0, duration: 0.25 }, '+=0.3');
 
         // ── Crossfade to screen 2 ───────────────────────────── //
-        tl.to(els.screen1, { opacity: 0, duration: 0.5, ease: 'power1.inOut' }, '+=0.8');
+        tl.to(els.screen1, { opacity: 0, duration: 0.5, ease: 'power1.inOut' }, '+=1.8');
         tl.to(els.screen2, { opacity: 1, duration: 0.5, ease: 'power1.inOut' }, '<');
 
         // ── Screen 2 sequence ───────────────────────────────── //
