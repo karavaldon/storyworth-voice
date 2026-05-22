@@ -256,23 +256,6 @@
       animation: cursor-blink 0.6s step-end infinite;
     }
 
-    /* ── Replay button ───────────────────────────────────────── */
-    .replay-btn {
-      position: absolute;
-      bottom: 16px; right: 16px;
-      background: #042a21;
-      color: #fff;
-      border: none;
-      border-radius: 24px;
-      padding: 10px 20px;
-      font-family: 'GT America', 'DM Sans', system-ui, sans-serif;
-      font-size: 14px;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-      z-index: 100;
-    }
-    .replay-btn:hover { opacity: 1; }
   `;
 
   function buildHTML(ap) {
@@ -319,7 +302,6 @@
             </div>
           </div>
 
-          <button class="replay-btn" id="replay-btn">↺ Replay</button>
         </div>
       </div>
     `;
@@ -443,14 +425,15 @@
           typeWriter(els.chapterBody, storyText, 22);
         }, [], '+=0.3');
 
+        tl.call(() => {
+          this._tl.kill();
+          this._tl = build();
+        }, [], '+=4');
+
         return tl;
       };
 
       this._tl = build();
-      $('replay-btn').addEventListener('click', () => {
-        this._tl.kill();
-        this._tl = build();
-      });
     }
   }
 
