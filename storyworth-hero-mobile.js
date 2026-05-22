@@ -27,7 +27,7 @@
       { text: "well, that's it. That's my whole life right there.", em: true },
     ],
     [
-      { text: "I'd always heard people say your whole life changes. I thought I understood what that meant. I didn't. You can't, until someone puts a baby in your arms and she opens her eyes and looks at you like you're the only thing in the world." },
+      { text: "I'd heard people say your whole life changes. I thought I understood what that meant. You can't, until someone puts a baby in your arms and she opens her eyes and looks at you like you're the only thing in the world." },
     ],
   ];
 
