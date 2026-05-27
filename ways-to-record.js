@@ -1,15 +1,18 @@
 (function () {
   'use strict';
 
-  const FRAME_W = 933.97;
-  const FRAME_H = 566.56;
+  /* ── Figma frame "voice" exact dimensions ── */
+  const FRAME_W = 859.397;
+  const FRAME_H = 487.32;
+
+  const CDN = 'https://cdn.jsdelivr.net/gh/karavaldon/storyworth-voice@main/assets';
 
   function injectFonts() {
     if (document.getElementById('sw-fonts')) return;
     const link = document.createElement('link');
     link.id = 'sw-fonts';
     link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;1,400&family=EB+Garamond:ital@0;1&display=swap';
+    link.href = 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap';
     document.head.appendChild(link);
   }
 
@@ -24,7 +27,6 @@
   const CSS = `
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     img, video { display: block; }
-
     :host { display: block; width: 100%; }
 
     .scale-wrap {
@@ -33,136 +35,103 @@
       overflow: hidden;
     }
 
+    /* Figma frame: 859.4 × 487.32, transparent bg */
     .frame {
       position: relative;
       width: ${FRAME_W}px;
       height: ${FRAME_H}px;
       transform-origin: top left;
-      background: #f8f4f1;
       overflow: hidden;
     }
 
-    /* ── Heading ── */
-    .heading {
+    /* ── Background photo (node 'image', x=154.1, y=0, 558.8×369.3, r=12) ── */
+    .bg-image {
       position: absolute;
-      top: 48px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'GT America', 'DM Sans', system-ui, sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      color: #1e1e1e;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    /* ── Phone cord ── */
-    .phone-cord {
-      position: absolute;
-      top: 70px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 760px;
-      height: 28px;
-      overflow: visible;
-    }
-
-    @keyframes cord-wiggle {
-      0%   { transform: translateX(-50%) translateY(0px); }
-      15%  { transform: translateX(-50%) translateY(-5px); }
-      30%  { transform: translateX(-50%) translateY(3px); }
-      45%  { transform: translateX(-50%) translateY(-4px); }
-      60%  { transform: translateX(-50%) translateY(2px); }
-      75%  { transform: translateX(-50%) translateY(-2px); }
-      100% { transform: translateX(-50%) translateY(0px); }
-    }
-
-    .phone-cord--wiggling {
-      animation: cord-wiggle 1.4s ease-in-out;
-    }
-
-    /* ── Cards row ── */
-    .cards-row {
-      position: absolute;
-      top: 106px;
-      left: 68px;
-      display: flex;
-      gap: 24px;
-    }
-
-    .card {
-      width: 250px;
-      height: 416px;
-      background: #f7ede6;
-      border-radius: 18px;
-      border: 5px solid #fff;
-      box-shadow: 0 4px 25px rgba(190,157,132,0.12);
-      overflow: hidden;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    /* ── Card video ── */
-    .card-video-wrap {
-      width: 100%;
-      height: 316px;
-      overflow: hidden;
-      background: #e8d5c4;
-    }
-
-    .card-video-wrap video {
-      width: 100%;
-      height: 100%;
+      left: 154.1px;
+      top: 0;
+      width: 558.8px;
+      height: 369.3px;
+      border-radius: 12px;
       object-fit: cover;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
     }
 
-    /* Daughter video: flip + re-center like the hero */
-    #wtr-card2 .card-video-wrap video {
+    /* ── Dad portrait (node 'dad', x=0, y=161.9, 234.4×234.4, r=30, border 8px) ── */
+    .dad-wrap {
+      position: absolute;
+      left: 0;
+      top: 161.9px;
+      width: 234.4px;
+      height: 234.4px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 8px solid #fff;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      z-index: 2;
+    }
+    .dad-wrap video {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* ── Daughter portrait (node 'daughter', abs bbox x=191.5, y=290.4, 173.9×173.9, r=30, border 5px, flipped) ── */
+    .daughter-wrap {
+      position: absolute;
+      left: 191.5px;
+      top: 290.4px;
+      width: 173.9px;
+      height: 173.9px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 5px solid #fff;
+      z-index: 3;
+    }
+    .daughter-wrap video {
+      width: 100%; height: 100%; object-fit: cover;
       transform: scaleX(-1);
       object-position: calc(50% + 30px) center;
     }
 
-    /* Empty video placeholder for card3 until a video is provided */
-    .card-video-wrap--empty {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .card-video-wrap--empty::after {
-      content: '';
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: rgba(200,168,130,0.3);
-      box-shadow: 0 0 0 12px rgba(200,168,130,0.12);
-    }
-
-    /* ── Card labels ── */
-    .card-label {
+    /* ── Cards (stacked vertically on right, x=566.4) ── */
+    .card {
       position: absolute;
-      bottom: 38px;
-      left: 0; right: 0;
-      text-align: center;
-      font-family: 'GT America', 'DM Sans', system-ui, sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      color: #1e1e1e;
-      line-height: 1.35;
-      padding: 0 12px;
+      left: 566.4px;
+      width: 293px;
+      height: 86px;
+      background: rgba(237,231,226,0.8);
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 4;
+    }
+    .card img {
+      width: 100%; height: 100%;
     }
 
-    .card-sublabel {
+    #wtr-card1 { top: 130.3px; }
+    #wtr-card2 { top: 237.0px; }
+    #wtr-card3 { top: 341.9px; }
+
+    /* ── Curly phone cord (node 'Vector 9782', x=64.7, y=402.1, rotated ~9.84°) ── */
+    .cord {
       position: absolute;
-      bottom: 18px;
-      left: 0; right: 0;
-      text-align: center;
-      font-family: 'GT America', 'DM Sans', system-ui, sans-serif;
-      font-size: 11px;
-      color: #9c826d;
-      line-height: 1.4;
-      padding: 0 12px;
+      left: 64.7px;
+      top: 402.1px;
+      width: 134px;
+      height: 80px;
+      transform-origin: 0 0;
+      transform: rotate(9.84deg);
+      z-index: 5;
+    }
+
+    @keyframes cord-wiggle {
+      0%   { transform: rotate(9.84deg) translateY(0px); }
+      20%  { transform: rotate(9.84deg) translateY(-6px); }
+      40%  { transform: rotate(9.84deg) translateY(4px); }
+      60%  { transform: rotate(9.84deg) translateY(-3px); }
+      80%  { transform: rotate(9.84deg) translateY(2px); }
+      100% { transform: rotate(9.84deg) translateY(0px); }
+    }
+    .cord--wiggling {
+      animation: cord-wiggle 1.4s ease-in-out;
     }
 
     /* ── Replay ── */
@@ -184,78 +153,43 @@
     .replay-btn:hover { opacity: 1; }
   `;
 
-  /* Curly phone-cord SVG path — repeating S-curve loops across 760px */
-  function cordPath() {
-    let d = 'M 0,14';
-    const loopW = 16;
-    const loops = Math.ceil(760 / loopW);
-    for (let i = 0; i < loops; i++) {
-      const x = i * loopW;
-      if (i % 2 === 0) {
-        d += ` C ${x + 4},2 ${x + 12},2 ${x + loopW},14`;
-      } else {
-        d += ` C ${x + 4},26 ${x + 12},26 ${x + loopW},14`;
-      }
-    }
-    return d;
-  }
-
   function buildHTML(ap) {
     return `
       <div class="scale-wrap">
         <div class="frame">
 
-          <p class="heading" id="wtr-heading">Ways to record your story</p>
+          <!-- Background photo -->
+          <img class="bg-image" id="wtr-bg" src="${ap}/wtr-bg.png" alt="" />
 
-          <!-- Curly phone cord -->
-          <svg class="phone-cord" id="wtr-cord"
-               viewBox="0 0 760 28" fill="none"
-               xmlns="http://www.w3.org/2000/svg"
-               preserveAspectRatio="xMidYMid meet">
-            <path d="${cordPath()}"
-                  stroke="#c8a882" stroke-width="2" stroke-linecap="round"
-                  fill="none"/>
-          </svg>
-
-          <div class="cards-row">
-
-            <!-- Card 1: Talk with Storyworth — dad2.mp4 -->
-            <div class="card" id="wtr-card1">
-              <div class="card-video-wrap">
-                <video id="wtr-vid1"
-                       src="${ap}/dad2.mp4"
-                       autoplay muted playsinline>
-                </video>
-              </div>
-              <div class="card-label">Talk with Storyworth</div>
-              <div class="card-sublabel">We call and ask the questions</div>
-            </div>
-
-            <!-- Card 2: Talk with family — daughter.mp4 -->
-            <div class="card" id="wtr-card2">
-              <div class="card-video-wrap">
-                <video id="wtr-vid2"
-                       src="${ap}/daughter.mp4"
-                       autoplay muted playsinline>
-                </video>
-              </div>
-              <div class="card-label">Talk with family</div>
-              <div class="card-sublabel">Record a conversation together</div>
-            </div>
-
-            <!-- Card 3: video to be added -->
-            <div class="card" id="wtr-card3">
-              <div class="card-video-wrap card-video-wrap--empty" id="wtr-card3-video">
-                <!-- swap in a <video> tag once the file is ready -->
-              </div>
-              <div class="card-label">Record yourself</div>
-              <div class="card-sublabel">Speak at your own pace</div>
-            </div>
-
+          <!-- Dad portrait — dad2.mp4 -->
+          <div class="dad-wrap" id="wtr-dad">
+            <video id="wtr-vid-dad" src="${ap}/dad2.mp4" autoplay muted playsinline></video>
           </div>
 
-          <button class="replay-btn" id="wtr-replay">↺ Replay</button>
+          <!-- Daughter portrait — daughter.mp4, flipped -->
+          <div class="daughter-wrap" id="wtr-daughter">
+            <video id="wtr-vid-daughter" src="${ap}/daughter.mp4" autoplay muted playsinline></video>
+          </div>
 
+          <!-- Card 1: Family Calls -->
+          <div class="card" id="wtr-card1">
+            <img src="${ap}/wtr-card1-icon.svg" alt="Family Calls let you share together" />
+          </div>
+
+          <!-- Card 2: Magic Interviews -->
+          <div class="card" id="wtr-card2">
+            <img src="${ap}/wtr-card2-icon.svg" alt="Magic Interviews help him remember details" />
+          </div>
+
+          <!-- Card 3: Story Calls -->
+          <div class="card" id="wtr-card3">
+            <img src="${ap}/wtr-card3-icon.svg" alt="Story Calls capture his voice word-for-word" />
+          </div>
+
+          <!-- Curly phone cord -->
+          <img class="cord" id="wtr-cord" src="${ap}/wtr-cord.svg" alt="" />
+
+          <button class="replay-btn" id="wtr-replay">↺ Replay</button>
         </div>
       </div>
     `;
@@ -264,7 +198,7 @@
   class WaysToRecord extends HTMLElement {
     connectedCallback() {
       injectFonts();
-      const ap = this.getAttribute('asset-path') || './assets';
+      const ap = this.getAttribute('asset-path') || CDN;
       const shadow = this.attachShadow({ mode: 'open' });
 
       const style = document.createElement('style');
@@ -297,17 +231,13 @@
     }
 
     _setupVideos(shadow) {
-      const vid1 = shadow.getElementById('wtr-vid1');
-      if (vid1) {
-        vid1.addEventListener('loadedmetadata', () => { vid1.currentTime = 0; });
-        vid1.addEventListener('ended', () => { vid1.currentTime = 0; vid1.play(); });
-      }
+      const dad = shadow.getElementById('wtr-vid-dad');
+      dad.addEventListener('loadedmetadata', () => { dad.currentTime = 0; });
+      dad.addEventListener('ended', () => { dad.currentTime = 0; dad.play(); });
 
-      const vid2 = shadow.getElementById('wtr-vid2');
-      if (vid2) {
-        vid2.addEventListener('loadedmetadata', () => { vid2.currentTime = 6; });
-        vid2.addEventListener('ended', () => { vid2.currentTime = 6; vid2.play(); });
-      }
+      const daughter = shadow.getElementById('wtr-vid-daughter');
+      daughter.addEventListener('loadedmetadata', () => { daughter.currentTime = 6; });
+      daughter.addEventListener('ended', () => { daughter.currentTime = 6; daughter.play(); });
     }
 
     _runAnimation(shadow) {
@@ -315,11 +245,13 @@
       const $ = id => shadow.getElementById(id);
 
       const els = {
-        heading: $('wtr-heading'),
-        cord:    $('wtr-cord'),
-        card1:   $('wtr-card1'),
-        card2:   $('wtr-card2'),
-        card3:   $('wtr-card3'),
+        bg:       $('wtr-bg'),
+        dad:      $('wtr-dad'),
+        daughter: $('wtr-daughter'),
+        cord:     $('wtr-cord'),
+        card1:    $('wtr-card1'),
+        card2:    $('wtr-card2'),
+        card3:    $('wtr-card3'),
       };
 
       const build = () => {
@@ -327,34 +259,32 @@
 
         /* reset */
         g.set(Object.values(els), { opacity: 0 });
-        g.set([els.card1, els.card2, els.card3], { y: 22 });
-        g.set(els.heading, { y: 6 });
-        g.set(els.cord, { scaleX: 0, transformOrigin: 'left center' });
+        g.set([els.dad, els.daughter, els.bg], { y: 14 });
+        g.set([els.card1, els.card2, els.card3], { x: 20 });
+        g.set(els.cord, { scale: 0.7, transformOrigin: '0 100%' });
 
-        /* heading */
-        tl.to(els.heading, { opacity: 1, y: 0, duration: 0.4 });
+        /* background + portraits fade in together */
+        tl.to(els.bg,       { opacity: 1, y: 0, duration: 0.5 });
+        tl.to(els.dad,      { opacity: 1, y: 0, duration: 0.5 }, '-=0.4');
+        tl.to(els.daughter, { opacity: 1, y: 0, duration: 0.5 }, '-=0.35');
 
-        /* cord stretches in from left */
-        tl.to(els.cord, {
-          opacity: 1, scaleX: 1, duration: 0.7, ease: 'power2.inOut'
-        }, '+=0.15');
-
-        /* card 1 */
-        tl.to(els.card1, { opacity: 1, y: 0, duration: 0.55, ease: 'back.out(1.3)' }, '+=0.3');
+        /* card 1 slides in from right */
+        tl.to(els.card1, { opacity: 1, x: 0, duration: 0.45, ease: 'back.out(1.3)' }, '+=0.2');
 
         /* card 2 — 1.5s after card 1 */
-        tl.to(els.card2, { opacity: 1, y: 0, duration: 0.55, ease: 'back.out(1.3)' }, '+=1.5');
+        tl.to(els.card2, { opacity: 1, x: 0, duration: 0.45, ease: 'back.out(1.3)' }, '+=1.5');
 
         /* card 3 — 1.5s after card 2 */
-        tl.to(els.card3, { opacity: 1, y: 0, duration: 0.55, ease: 'back.out(1.3)' }, '+=1.5');
+        tl.to(els.card3, { opacity: 1, x: 0, duration: 0.45, ease: 'back.out(1.3)' }, '+=1.5');
 
-        /* cord wiggle after all three cards are in */
+        /* cord pops in then wiggles */
+        tl.to(els.cord, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(2)' }, '+=0.3');
         tl.call(() => {
-          const cord = els.cord;
-          cord.classList.remove('phone-cord--wiggling');
-          void cord.offsetWidth; /* force reflow to restart animation */
-          cord.classList.add('phone-cord--wiggling');
-        }, [], '+=0.4');
+          const c = els.cord;
+          c.classList.remove('cord--wiggling');
+          void c.offsetWidth;
+          c.classList.add('cord--wiggling');
+        }, [], '+=0.1');
 
         /* hold, then loop */
         tl.call(() => {
@@ -362,13 +292,12 @@
             if (this._tl) this._tl.kill();
             this._tl = build();
           }, 3500);
-        }, [], '+=1.2');
+        }, [], '+=1.8');
 
         return tl;
       };
 
       this._tl = build();
-
       $('wtr-replay').addEventListener('click', () => {
         if (this._tl) this._tl.kill();
         this._tl = build();
