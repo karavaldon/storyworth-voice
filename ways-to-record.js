@@ -57,7 +57,7 @@
     /* ── Dad portrait (node 'dad', x=0, y=161.9, 234.4×234.4, r=30, drop shadow) ── */
     .dad-wrap {
       position: absolute;
-      left: 0;
+      left: 8px;
       top: 161.9px;
       width: 234.4px;
       height: 234.4px;
@@ -98,6 +98,9 @@
       height: 86px;
       border-radius: 12px;
       overflow: hidden;
+      background: rgba(238, 231, 226, 0.15);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
       z-index: 5;
     }
     .card img {
@@ -123,7 +126,7 @@
     /* ── Recording dot — Figma: x=184.5, y=189.3, 25.57×25.57 ── */
     .rec-dot {
       position: absolute;
-      left: 184.5px;
+      left: 189.5px;
       top: 189.3px;
       width: 25.57px;
       height: 25.57px;
@@ -247,15 +250,15 @@
         const tl = g.timeline({ defaults: { ease: 'power2.out' } });
 
         /* reset — cord and rec dot start visible */
-        g.set([els.bg, els.dad, els.daughter, els.card1, els.card2, els.card3], { opacity: 0 });
+        g.set([els.bg, els.dad, els.daughter, els.card1, els.card2, els.card3, els.rec], { opacity: 0 });
         g.set(els.cord, { opacity: 1 });
-        g.set(els.rec,  { opacity: 1 });
-        g.set([els.dad, els.daughter, els.bg], { y: 14 });
+        g.set([els.dad, els.daughter, els.bg, els.rec], { y: 14 });
         g.set([els.card1, els.card2, els.card3], { x: 20 });
 
         /* background + portraits fade in together */
         tl.to(els.bg,       { opacity: 1, y: 0, duration: 0.5 });
         tl.to(els.dad,      { opacity: 1, y: 0, duration: 0.5 }, '-=0.4');
+        tl.to(els.rec,      { opacity: 1, y: 0, duration: 0.5 }, '-=0.5');
         tl.to(els.daughter, { opacity: 1, y: 0, duration: 0.5 }, '-=0.35');
 
         /* card 1 slides in */
