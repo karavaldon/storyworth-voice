@@ -41,7 +41,6 @@
       width: ${FRAME_W}px;
       height: ${FRAME_H}px;
       transform-origin: top left;
-      overflow: hidden;
     }
 
     /* ── Background photo (node 'image', x=154.1, y=0, 558.8×369.3, r=12) ── */
