@@ -123,11 +123,11 @@
       z-index: 5;
     }
 
-    /* ── Recording dot ── */
+    /* ── Recording dot — top-right corner of dad portrait ── */
     .rec-dot {
       position: absolute;
-      left: 16px;
-      top: 16px;
+      left: 214px;   /* 234.4 - 10px dot - 10px inset */
+      top: 172px;    /* 161.9 + 10px inset */
       width: 10px;
       height: 10px;
       border-radius: 50%;
