@@ -43,14 +43,13 @@
       background: none;
     }
 
-    /* ── Background photo: x=25.5, y=395.41, 349×257, r=12 ── */
+    /* ── Background photo ── */
     .bg-image {
       position: absolute;
       left: -0.5px;
       top: 395.41px;
       width: 401px;
       height: auto;
-      border-radius: 20px;
     }
 
     /* ── Dad portrait: x=25.38, y=28.71, 228.94×228.94, r=20 ── */
@@ -144,7 +143,7 @@
       <div class="scale-wrap">
         <div class="frame">
 
-          <img class="bg-image" id="wtrm-bg" src="${ap}/mom-dad.png" alt="" />
+          <img class="bg-image" id="wtrm-bg" src="${ap}/mom-dad-mobile.png" alt="" />
 
           <div class="dad-wrap" id="wtrm-dad">
             <video id="wtrm-vid-dad" src="${ap}/dad3.mp4" autoplay muted playsinline></video>
