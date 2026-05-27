@@ -53,6 +53,9 @@
       height: 369.3px;
       border-radius: 12px;
       object-fit: cover;
+      object-position: center 30%;
+      transform: scale(1.25);
+      transform-origin: center center;
       box-shadow: 0 4px 18px rgba(0,0,0,0.12);
     }
 
@@ -138,23 +141,6 @@
     }
     .rec-dot { animation: rec-glow 1.4s ease-in-out infinite; }
 
-    /* ── Replay ── */
-    .replay-btn {
-      position: absolute;
-      bottom: 16px; right: 16px;
-      background: #042a21;
-      color: #fff;
-      border: none;
-      border-radius: 24px;
-      padding: 10px 20px;
-      font-family: 'GT America', 'DM Sans', system-ui, sans-serif;
-      font-size: 14px;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-      z-index: 100;
-    }
-    .replay-btn:hover { opacity: 1; }
   `;
 
   function buildHTML(ap) {
@@ -195,8 +181,6 @@
 
           <!-- Recording indicator -->
           <div class="rec-dot" id="wtr-rec"></div>
-
-          <button class="replay-btn" id="wtr-replay">↺ Replay</button>
         </div>
       </div>
     `;
@@ -298,10 +282,6 @@
       };
 
       this._tl = build();
-      $('wtr-replay').addEventListener('click', () => {
-        if (this._tl) this._tl.kill();
-        this._tl = build();
-      });
     }
   }
 
