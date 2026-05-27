@@ -119,6 +119,16 @@
       z-index: 2;
     }
 
+    /* ── Phone cord: x=265.74, y=72.17, 48.5×71.07 ── */
+    .cord {
+      position: absolute;
+      left: 271.74px;
+      top: 72.17px;
+      width: 48.5px;
+      height: 71.07px;
+      z-index: 6;
+    }
+
     /* ── Recording dot: x=202, y=48.54, 33.18×33.18 ── */
     .rec-dot {
       position: absolute;
@@ -165,6 +175,8 @@
             <img src="${ap}/card3.png" alt="Story Calls" />
             <div class="card-progress"></div>
           </div>
+
+          <img class="cord" id="wtrm-cord" src="${ap}/wtr-cord-mobile.svg" alt="" />
 
           <div class="rec-dot" id="wtrm-rec"></div>
         </div>
