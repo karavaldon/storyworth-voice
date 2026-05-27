@@ -56,7 +56,7 @@
       box-shadow: 0 4px 18px rgba(0,0,0,0.12);
     }
 
-    /* ── Dad portrait (node 'dad', x=0, y=161.9, 234.4×234.4, r=30, border 8px) ── */
+    /* ── Dad portrait (node 'dad', x=0, y=161.9, 234.4×234.4, r=30, drop shadow) ── */
     .dad-wrap {
       position: absolute;
       left: 0;
@@ -65,15 +65,14 @@
       height: 234.4px;
       border-radius: 30px;
       overflow: hidden;
-      border: 8px solid #fff;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
       z-index: 2;
     }
     .dad-wrap video {
       width: 100%; height: 100%; object-fit: cover;
     }
 
-    /* ── Daughter portrait (node 'daughter', abs bbox x=191.5, y=290.4, 173.9×173.9, r=30, border 5px, flipped) ── */
+    /* ── Daughter portrait (node 'daughter', x=191.5, y=290.4, 173.9×173.9, r=30, drop shadow, flipped) ── */
     .daughter-wrap {
       position: absolute;
       left: 191.5px;
@@ -82,7 +81,7 @@
       height: 173.9px;
       border-radius: 30px;
       overflow: hidden;
-      border: 5px solid #fff;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
       z-index: 3;
     }
     .daughter-wrap video {
@@ -159,7 +158,7 @@
         <div class="frame">
 
           <!-- Background photo -->
-          <img class="bg-image" id="wtr-bg" src="${ap}/wtr-bg.png" alt="" />
+          <img class="bg-image" id="wtr-bg" src="${ap}/mom-dad-book.jpg" alt="" />
 
           <!-- Dad portrait — dad2.mp4 -->
           <div class="dad-wrap" id="wtr-dad">
