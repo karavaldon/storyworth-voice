@@ -121,17 +121,22 @@
       z-index: 5;
     }
 
-    @keyframes cord-wiggle {
-      0%   { transform: rotate(9.84deg) translateY(0px); }
-      20%  { transform: rotate(9.84deg) translateY(-6px); }
-      40%  { transform: rotate(9.84deg) translateY(4px); }
-      60%  { transform: rotate(9.84deg) translateY(-3px); }
-      80%  { transform: rotate(9.84deg) translateY(2px); }
-      100% { transform: rotate(9.84deg) translateY(0px); }
+    /* ── Recording dot ── */
+    .rec-dot {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #e8392a;
+      z-index: 10;
     }
-    .cord--wiggling {
-      animation: cord-wiggle 1.4s ease-in-out;
+    @keyframes rec-glow {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232,57,42,0.5); }
+      50%      { opacity: 0.6; box-shadow: 0 0 0 6px rgba(232,57,42,0); }
     }
+    .rec-dot { animation: rec-glow 1.4s ease-in-out infinite; }
 
     /* ── Replay ── */
     .replay-btn {
@@ -187,6 +192,9 @@
 
           <!-- Curly phone cord -->
           <img class="cord" id="wtr-cord" src="${ap}/wtr-cord.svg" alt="" />
+
+          <!-- Recording indicator -->
+          <div class="rec-dot" id="wtr-rec"></div>
 
           <button class="replay-btn" id="wtr-replay">↺ Replay</button>
         </div>
@@ -248,6 +256,7 @@
         dad:      $('wtr-dad'),
         daughter: $('wtr-daughter'),
         cord:     $('wtr-cord'),
+        rec:      $('wtr-rec'),
         card1:    $('wtr-card1'),
         card2:    $('wtr-card2'),
         card3:    $('wtr-card3'),
@@ -256,34 +265,26 @@
       const build = () => {
         const tl = g.timeline({ defaults: { ease: 'power2.out' } });
 
-        /* reset */
-        g.set(Object.values(els), { opacity: 0 });
+        /* reset — cord and rec dot start visible */
+        g.set([els.bg, els.dad, els.daughter, els.card1, els.card2, els.card3], { opacity: 0 });
+        g.set(els.cord, { opacity: 1 });
+        g.set(els.rec,  { opacity: 1 });
         g.set([els.dad, els.daughter, els.bg], { y: 14 });
         g.set([els.card1, els.card2, els.card3], { x: 20 });
-        g.set(els.cord, { scale: 0.7, transformOrigin: '0 100%' });
 
         /* background + portraits fade in together */
         tl.to(els.bg,       { opacity: 1, y: 0, duration: 0.5 });
         tl.to(els.dad,      { opacity: 1, y: 0, duration: 0.5 }, '-=0.4');
         tl.to(els.daughter, { opacity: 1, y: 0, duration: 0.5 }, '-=0.35');
 
-        /* card 1 slides in from right */
-        tl.to(els.card1, { opacity: 1, x: 0, duration: 0.45, ease: 'back.out(1.3)' }, '+=0.2');
+        /* card 1 slides in */
+        tl.to(els.card1, { opacity: 1, x: 0, duration: 0.35, ease: 'back.out(1.3)' }, '+=0.15');
 
-        /* card 2 — 1.5s after card 1 */
-        tl.to(els.card2, { opacity: 1, x: 0, duration: 0.45, ease: 'back.out(1.3)' }, '+=1.5');
+        /* card 2 — 0.8s after card 1 */
+        tl.to(els.card2, { opacity: 1, x: 0, duration: 0.35, ease: 'back.out(1.3)' }, '+=0.8');
 
-        /* card 3 — 1.5s after card 2 */
-        tl.to(els.card3, { opacity: 1, x: 0, duration: 0.45, ease: 'back.out(1.3)' }, '+=1.5');
-
-        /* cord pops in then wiggles */
-        tl.to(els.cord, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(2)' }, '+=0.3');
-        tl.call(() => {
-          const c = els.cord;
-          c.classList.remove('cord--wiggling');
-          void c.offsetWidth;
-          c.classList.add('cord--wiggling');
-        }, [], '+=0.1');
+        /* card 3 — 0.8s after card 2 */
+        tl.to(els.card3, { opacity: 1, x: 0, duration: 0.35, ease: 'back.out(1.3)' }, '+=0.8');
 
         /* hold, then loop */
         tl.call(() => {
