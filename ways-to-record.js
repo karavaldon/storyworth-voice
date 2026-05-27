@@ -27,12 +27,13 @@
   const CSS = `
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     img, video { display: block; }
-    :host { display: block; width: 100%; }
+    :host { display: block; width: 100%; background: transparent; }
 
     .scale-wrap {
       position: relative;
       width: 100%;
       overflow: hidden;
+      background: none;
     }
 
     /* Figma frame: 859.4 × 487.32, transparent bg */
@@ -41,21 +42,16 @@
       width: ${FRAME_W}px;
       height: ${FRAME_H}px;
       transform-origin: top left;
+      background: none;
     }
 
-    /* ── Background photo (node 'image', x=154.1, y=0, 558.8×369.3, r=12) ── */
+    /* ── Background photo ── */
     .bg-image {
       position: absolute;
       left: 154.1px;
       top: 0;
       width: 558.8px;
-      height: 369.3px;
-      border-radius: 12px;
-      object-fit: cover;
-      object-position: center 30%;
-      transform: scale(1.25);
-      transform-origin: center center;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+      height: auto;
     }
 
     /* ── Dad portrait (node 'dad', x=0, y=161.9, 234.4×234.4, r=30, drop shadow) ── */
@@ -67,11 +63,13 @@
       height: 234.4px;
       border-radius: 30px;
       overflow: hidden;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
-      z-index: 2;
+      box-shadow: 0 0 0 8px #fff, 0 4px 18px rgba(0,0,0,0.12);
+      z-index: 4;
     }
     .dad-wrap video {
       width: 100%; height: 100%; object-fit: cover;
+      transform: scale(1.3);
+      object-position: calc(50% + 24px) center;
     }
 
     /* ── Daughter portrait (node 'daughter', x=191.5, y=290.4, 173.9×173.9, r=30, drop shadow, flipped) ── */
@@ -83,7 +81,7 @@
       height: 173.9px;
       border-radius: 30px;
       overflow: hidden;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+      box-shadow: 0 0 0 5px #fff, 0 4px 18px rgba(0,0,0,0.12);
       z-index: 3;
     }
     .daughter-wrap video {
@@ -98,10 +96,9 @@
       left: 566.4px;
       width: 293px;
       height: 86px;
-      background: rgba(237,231,226,0.8);
       border-radius: 12px;
       overflow: hidden;
-      z-index: 4;
+      z-index: 5;
     }
     .card img {
       width: 100%; height: 100%;
@@ -114,29 +111,30 @@
     /* ── Curly phone cord (node 'Vector 9782', x=64.7, y=402.1, rotated ~9.84°) ── */
     .cord {
       position: absolute;
-      left: 64.7px;
-      top: 402.1px;
+      left: 80.7px;
+      top: 410.1px;
       width: 134px;
       height: 80px;
       transform-origin: 0 0;
       transform: rotate(9.84deg);
-      z-index: 5;
+      z-index: 6;
     }
 
-    /* ── Recording dot — top-right corner of dad portrait ── */
+    /* ── Recording dot — Figma: x=184.5, y=189.3, 25.57×25.57 ── */
     .rec-dot {
       position: absolute;
-      left: 214px;   /* 234.4 - 10px dot - 10px inset */
-      top: 172px;    /* 161.9 + 10px inset */
-      width: 10px;
-      height: 10px;
+      left: 184.5px;
+      top: 189.3px;
+      width: 25.57px;
+      height: 25.57px;
       border-radius: 50%;
-      background: #e8392a;
+      background: #F6734D;
+      border: 3px solid #fff;
       z-index: 10;
     }
     @keyframes rec-glow {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232,57,42,0.5); }
-      50%      { opacity: 0.6; box-shadow: 0 0 0 6px rgba(232,57,42,0); }
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(246,115,77,0.5); }
+      50%      { opacity: 0.6; box-shadow: 0 0 0 9px rgba(246,115,77,0); }
     }
     .rec-dot { animation: rec-glow 1.4s ease-in-out infinite; }
 
@@ -148,11 +146,11 @@
         <div class="frame">
 
           <!-- Background photo -->
-          <img class="bg-image" id="wtr-bg" src="${ap}/mom-dad-book.jpg" alt="" />
+          <img class="bg-image" id="wtr-bg" src="${ap}/mom-dad.png" alt="" />
 
           <!-- Dad portrait — dad2.mp4 -->
           <div class="dad-wrap" id="wtr-dad">
-            <video id="wtr-vid-dad" src="${ap}/dad2.mp4" autoplay muted playsinline></video>
+            <video id="wtr-vid-dad" src="${ap}/dad3.mp4" autoplay muted playsinline></video>
           </div>
 
           <!-- Daughter portrait — daughter.mp4, flipped -->
@@ -162,17 +160,17 @@
 
           <!-- Card 1: Family Calls -->
           <div class="card" id="wtr-card1">
-            <img src="${ap}/wtr-card1-icon.svg" alt="Family Calls let you share together" />
+            <img src="${ap}/card1.png" alt="Family Calls let you share together" />
           </div>
 
           <!-- Card 2: Magic Interviews -->
           <div class="card" id="wtr-card2">
-            <img src="${ap}/wtr-card2-icon.svg" alt="Magic Interviews help him remember details" />
+            <img src="${ap}/card2.png" alt="Magic Interviews help him remember details" />
           </div>
 
           <!-- Card 3: Story Calls -->
           <div class="card" id="wtr-card3">
-            <img src="${ap}/wtr-card3-icon.svg" alt="Story Calls capture his voice word-for-word" />
+            <img src="${ap}/card3.png" alt="Story Calls capture his voice word-for-word" />
           </div>
 
           <!-- Curly phone cord -->
@@ -217,13 +215,13 @@
       const frame = shadow.querySelector('.frame');
       if (frame) frame.style.transform = `scale(${scale})`;
       const wrap = shadow.querySelector('.scale-wrap');
-      if (wrap) wrap.style.height = (FRAME_H * scale) + 'px';
+      if (wrap) wrap.style.height = ((FRAME_H + 20) * scale) + 'px';
     }
 
     _setupVideos(shadow) {
       const dad = shadow.getElementById('wtr-vid-dad');
-      dad.addEventListener('loadedmetadata', () => { dad.currentTime = 0; });
-      dad.addEventListener('ended', () => { dad.currentTime = 0; dad.play(); });
+      dad.addEventListener('loadedmetadata', () => { dad.currentTime = 13; });
+      dad.addEventListener('ended', () => { dad.currentTime = 13; dad.play(); });
 
       const daughter = shadow.getElementById('wtr-vid-daughter');
       daughter.addEventListener('loadedmetadata', () => { daughter.currentTime = 6; });
