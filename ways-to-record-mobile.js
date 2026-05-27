@@ -50,6 +50,7 @@
       top: 395.41px;
       width: 401px;
       height: auto;
+      border-radius: 20px;
     }
 
     /* ── Dad portrait: x=25.38, y=28.71, 228.94×228.94, r=20 ── */
