@@ -107,11 +107,9 @@
       line-height: normal;
       transform: translateX(-50%);
     }
-    .label strong { font-weight: 500; }
-
     /* Screen 1 labels */
-    .label--talk   { left: 209.14px; top: 19.98px; }
-    .label--family { left: 238.64px; top: 50px; }
+    .label--talk   { left: 148px; top: 19.98px; transform: none; text-align: left; }
+    .label--family { left: 148px; top: 50px;    transform: none; text-align: left; }
 
     /* Screen 2 label — centered in 400px frame */
     .label--write  { left: 200px; top: 50px; }
@@ -265,8 +263,8 @@
 
           <!-- ── Screen 1: mobile 1 (phone call side) ───────── -->
           <div class="screen" id="screen-1">
-            <p class="label label--talk"   id="lbl-talk">Talk with <strong>us</strong></p>
-            <p class="label label--family" id="lbl-family">Or talk with <strong>family</strong></p>
+            <p class="label label--talk"   id="lbl-talk">Have a conversation</p>
+            <p class="label label--family" id="lbl-family">with us or with family</p>
 
             <svg id="audio-wave" class="audio-wave" viewBox="0 0 61.1992 39.8345" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path class="bar" id="bar-1" d="M6.02933 11.5264C6.02933 9.76039 4.67923 8.3286 3.01414 8.3286C1.35009 8.3286 0 9.76039 0 11.5264V28.3076C0 30.0737 1.35009 31.5054 3.01414 31.5054C4.67923 31.5054 6.02933 30.0737 6.02933 28.3076V11.5264Z" fill="#FF9E82"/>
@@ -294,7 +292,7 @@
           <!-- ── Screen 2: mobile 2 (chapter side) ───────────── -->
           <div class="screen" id="screen-2">
             <img class="glow" id="glow" src="${ap}/glow.svg" alt="" />
-            <p class="label label--write" id="lbl-write">We write a <strong>chapter</strong></p>
+            <p class="label label--write" id="lbl-write">We write a chapter</p>
             <div class="chapter-card" id="chapter-card"></div>
             <div class="chapter-page" id="chapter-page">
               <h2 class="chapter-title" id="chapter-title">Do you remember the moment you became a dad?</h2>
@@ -400,26 +398,26 @@
         g.set([els.chapterCard, els.chapterPage, els.chapterTitle], { y: 12 });
 
         // ── Screen 1 sequence ───────────────────────────────── //
-        tl.to(els.lblTalk,   { opacity: 1, y: 0, duration: 0.35 });
-        tl.to(els.audioWave, { opacity: 1, duration: 0.35 }, '<');
-        tl.to(els.lblFamily, { opacity: 1, y: 0, duration: 0.3  }, '+=0.25');
-        tl.to(els.phoneCard, { opacity: 1, y: 0, duration: 0.5  }, '+=0.3');
-        tl.to(els.portrait,  { opacity: 1, y: 0, duration: 0.5  }, '-=0.35');
-        tl.to(els.daughter,  { opacity: 1, y: 0, duration: 0.5  }, '<+=0.05');
-        tl.to(els.bubble1,   { opacity: 1, y: 0, duration: 0.25 }, '+=0.2');
-        tl.to(els.bubble2,   { opacity: 1, y: 0, duration: 0.25 }, '+=0.3');
-        tl.to(els.bubble3,   { opacity: 1, y: 0, duration: 0.25 }, '+=0.3');
+        tl.to(els.lblTalk,   { opacity: 1, y: 0, duration: 0.28 });
+        tl.to(els.audioWave, { opacity: 1, duration: 0.28 }, '<');
+        tl.to(els.lblFamily, { opacity: 1, y: 0, duration: 0.25 }, '+=0.18');
+        tl.to(els.phoneCard, { opacity: 1, y: 0, duration: 0.4  }, '+=0.2');
+        tl.to(els.portrait,  { opacity: 1, y: 0, duration: 0.4  }, '-=0.3');
+        tl.to(els.daughter,  { opacity: 1, y: 0, duration: 0.4  }, '<+=0.05');
+        tl.to(els.bubble1,   { opacity: 1, y: 0, duration: 0.22 }, '+=0.15');
+        tl.to(els.bubble2,   { opacity: 1, y: 0, duration: 0.22 }, '+=0.22');
+        tl.to(els.bubble3,   { opacity: 1, y: 0, duration: 0.22 }, '+=0.22');
 
         // ── Crossfade to screen 2 ───────────────────────────── //
-        tl.to(els.screen1, { opacity: 0, duration: 0.5, ease: 'power1.inOut' }, '+=1.8');
-        tl.to(els.screen2, { opacity: 1, duration: 0.5, ease: 'power1.inOut' }, '<');
+        tl.to(els.screen1, { opacity: 0, duration: 0.35, ease: 'power1.inOut' }, '+=1.0');
+        tl.to(els.screen2, { opacity: 1, duration: 0.35, ease: 'power1.inOut' }, '<');
 
         // ── Screen 2 sequence ───────────────────────────────── //
         tl.to(els.lblWrite,     { opacity: 1, duration: 0.35 }, '+=0.2');
-        tl.to(els.chapterCard,  { opacity: 1, y: 0, duration: 0.55 }, '-=0.2');
+        tl.to(els.chapterCard,  { opacity: 1, y: 0, duration: 0.5 }, '-=0.2');
+        tl.to(els.chapterPage,  { opacity: 1, y: 0, duration: 0.5 }, '<');
+        tl.to(els.chapterTitle, { opacity: 1, y: 0, duration: 0.5 }, '<');
         tl.to(els.glow,         { opacity: 0.6, duration: 0.8 }, '<');
-        tl.to(els.chapterPage,  { opacity: 1, y: 0, duration: 0.4 }, '-=0.2');
-        tl.to(els.chapterTitle, { opacity: 1, y: 0, duration: 0.45 }, '+=0.15');
         tl.call(() => {
           g.set(els.chapterBody, { opacity: 1 });
           typeWriter(els.chapterBody, storyText, 12, () => {
@@ -428,7 +426,7 @@
               this._tl = build();
             }, 4000);
           });
-        }, [], '+=0.3');
+        }, [], '+=0.1');
 
         return tl;
       };
