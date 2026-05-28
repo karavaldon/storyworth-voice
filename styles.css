@@ -39,13 +39,9 @@ img { display: block; }
   transform: translateX(-50%);
 }
 
-.label strong { font-weight: 500; }
 
-/* "Talk with us" — centered at x=219.01 */
-.label--talk   { left: 219.01px; top: 0; }
-
-/* "Or talk with family" — centered at x=248.51 */
-.label--family { left: 248.51px; top: 29.33px; }
+.label--talk   { left: 160px; top: 0;      transform: none; text-align: left; }
+.label--family { left: 160px; top: 29.33px; transform: none; text-align: left; }
 
 /* "We write a chapter" — centered at x=533.2, top=113.08 */
 .label--write  { left: 533.2px; top: 113.08px; }

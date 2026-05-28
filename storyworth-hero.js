@@ -99,7 +99,7 @@
       line-height: normal;
       transform: translateX(-50%);
     }
-    .label strong { font-weight: 500; }
+
     .label--talk   { left: 219.01px; top: 0; }
     .label--family { left: 248.51px; top: 29.33px; }
     .label--write  { left: 533.2px;  top: 113.08px; }
@@ -257,9 +257,9 @@
         <div class="frame">
           <img class="glow" id="glow" src="${ap}/glow.svg" alt="" />
 
-          <p class="label label--talk"   id="lbl-talk">Talk with <strong>us</strong></p>
-          <p class="label label--family" id="lbl-family">Or talk with <strong>family</strong></p>
-          <p class="label label--write"  id="lbl-write">We write a <strong>chapter</strong></p>
+          <p class="label label--talk"   id="lbl-talk">Have a conversation</p>
+          <p class="label label--family" id="lbl-family">with us or with family</p>
+          <p class="label label--write"  id="lbl-write">We write a chapter</p>
 
           <div class="portrait-wrap portrait-wrap--daughter" id="daughter">
             <video src="${ap}/daughter.mp4" id="daughter-video" autoplay muted playsinline></video>
@@ -373,25 +373,25 @@
         g.set([els.chapterCard, els.chapterPage, els.chapterTitle], { x: 16 });
         g.set(els.connector, { scale: 0.6, transformOrigin: 'center center' });
 
-        tl.to(els.lblTalk,      { opacity: 1, y: 0, duration: 0.35 });
-        tl.to(els.audioWave,    { opacity: 1, duration: 0.35 }, '<');
-        tl.to(els.lblFamily,    { opacity: 1, y: 0, duration: 0.3 }, '+=0.25');
-        tl.to(els.phoneCard,    { opacity: 1, y: 0, duration: 0.5 }, '+=0.3');
-        tl.to(els.portrait,     { opacity: 1, y: 0, duration: 0.5 }, '-=0.35');
-        tl.to(els.daughter,     { opacity: 1, y: 0, duration: 0.5 }, '<+=0.05');
-        tl.to(els.bubble1,      { opacity: 1, y: 0, duration: 0.25 }, '+=0.2');
-        tl.to(els.bubble2,      { opacity: 1, y: 0, duration: 0.25 }, '+=0.3');
-        tl.to(els.bubble3,      { opacity: 1, y: 0, duration: 0.25 }, '+=0.3');
-        tl.to(els.connector,    { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.5)' }, '+=0.3');
-        tl.to(els.lblWrite,     { opacity: 1, duration: 0.35 }, '-=0.1');
-        tl.to(els.chapterCard,  { opacity: 1, x: 0, duration: 0.55 }, '-=0.2');
-        tl.to(els.glow,         { opacity: 0.6, duration: 0.8 }, '<');
-        tl.to(els.chapterPage,  { opacity: 1, x: 0, duration: 0.4 }, '-=0.2');
-        tl.to(els.chapterTitle, { opacity: 1, x: 0, duration: 0.45 }, '+=0.15');
+        tl.to(els.lblTalk,      { opacity: 1, y: 0, duration: 0.3 });
+        tl.to(els.audioWave,    { opacity: 1, duration: 0.3 }, '<');
+        tl.to(els.lblFamily,    { opacity: 1, y: 0, duration: 0.25 }, '+=0.2');
+        tl.to(els.phoneCard,    { opacity: 1, y: 0, duration: 0.45 }, '+=0.2');
+        tl.to(els.portrait,     { opacity: 1, y: 0, duration: 0.45 }, '-=0.35');
+        tl.to(els.daughter,     { opacity: 1, y: 0, duration: 0.45 }, '<+=0.05');
+        tl.to(els.bubble1,      { opacity: 1, y: 0, duration: 0.22 }, '+=0.15');
+        tl.to(els.bubble2,      { opacity: 1, y: 0, duration: 0.22 }, '+=0.22');
+        tl.to(els.bubble3,      { opacity: 1, y: 0, duration: 0.22 }, '+=0.22');
+        tl.to(els.connector,    { opacity: 1, scale: 1, duration: 0.35, ease: 'back.out(1.5)' }, '+=0.22');
+        tl.to(els.lblWrite,     { opacity: 1, duration: 0.3 }, '-=0.1');
+        tl.to(els.chapterCard,  { opacity: 1, x: 0, duration: 0.5 }, '-=0.15');
+        tl.to(els.chapterPage,  { opacity: 1, x: 0, duration: 0.5 }, '<');
+        tl.to(els.glow,         { opacity: 0.6, duration: 0.7 }, '<');
+        tl.to(els.chapterTitle, { opacity: 1, x: 0, duration: 0.4 }, '+=0.12');
         tl.call(() => {
           g.set(els.chapterBody, { opacity: 1 });
           typeWriter(els.chapterBody, storyText, 22);
-        }, [], '+=0.3');
+        }, [], '+=0.25');
         return tl;
       };
 

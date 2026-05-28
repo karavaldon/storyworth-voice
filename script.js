@@ -110,42 +110,40 @@ function buildTimeline() {
   gsap.set([els.chapterCard, els.chapterPage, els.chapterTitle], { x: 16 });
   gsap.set(els.connector, { scale: 0.6, transformOrigin: 'center center' });
 
-  // 1. "Talk with us" + audio wave
-  tl.to(els.lblTalk,   { opacity: 1, y: 0, duration: 0.35 });
-  tl.to(els.audioWave, { opacity: 1, duration: 0.35 }, '<');
+  // 1. "Have a conversation" + audio wave
+  tl.to(els.lblTalk,   { opacity: 1, y: 0, duration: 0.3 });
+  tl.to(els.audioWave, { opacity: 1, duration: 0.3 }, '<');
 
-  // 2. "Or talk with family"
-  tl.to(els.lblFamily, { opacity: 1, y: 0, duration: 0.3 }, '+=0.25');
+  // 2. "with us or with family"
+  tl.to(els.lblFamily, { opacity: 1, y: 0, duration: 0.25 }, '+=0.2');
 
   // 3. Phone card, then dad + daughter close behind
-  tl.to(els.phoneCard, { opacity: 1, y: 0, duration: 0.5 }, '+=0.3');
-  tl.to(els.portrait,  { opacity: 1, y: 0, duration: 0.5 }, '-=0.35');
-  tl.to(els.daughter,  { opacity: 1, y: 0, duration: 0.5 }, '<+=0.05');
+  tl.to(els.phoneCard, { opacity: 1, y: 0, duration: 0.45 }, '+=0.2');
+  tl.to(els.portrait,  { opacity: 1, y: 0, duration: 0.45 }, '-=0.35');
+  tl.to(els.daughter,  { opacity: 1, y: 0, duration: 0.45 }, '<+=0.05');
 
   // 6. Chat 1 → 2 → 3
-  tl.to(els.bubble1, { opacity: 1, y: 0, duration: 0.25 }, '+=0.2');
-  tl.to(els.bubble2, { opacity: 1, y: 0, duration: 0.25 }, '+=0.3');
-  tl.to(els.bubble3, { opacity: 1, y: 0, duration: 0.25 }, '+=0.3');
+  tl.to(els.bubble1, { opacity: 1, y: 0, duration: 0.22 }, '+=0.15');
+  tl.to(els.bubble2, { opacity: 1, y: 0, duration: 0.22 }, '+=0.22');
+  tl.to(els.bubble3, { opacity: 1, y: 0, duration: 0.22 }, '+=0.22');
 
   // 7. Arrow connector
-  tl.to(els.connector, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.5)' }, '+=0.3');
+  tl.to(els.connector, { opacity: 1, scale: 1, duration: 0.35, ease: 'back.out(1.5)' }, '+=0.22');
 
   // 8. "We write a chapter" label + chapter card (screen) + glow
-  tl.to(els.lblWrite,    { opacity: 1, duration: 0.35 }, '-=0.1');
-  tl.to(els.chapterCard, { opacity: 1, x: 0, duration: 0.55 }, '-=0.2');
-  tl.to(els.glow,        { opacity: 0.6, duration: 0.8 }, '<');
-
-  // 9. White page
-  tl.to(els.chapterPage, { opacity: 1, x: 0, duration: 0.4 }, '-=0.2');
+  tl.to(els.lblWrite,    { opacity: 1, duration: 0.3 }, '-=0.1');
+  tl.to(els.chapterCard, { opacity: 1, x: 0, duration: 0.5 }, '-=0.15');
+  tl.to(els.chapterPage, { opacity: 1, x: 0, duration: 0.5 }, '<');
+  tl.to(els.glow,        { opacity: 0.6, duration: 0.7 }, '<');
 
   // 10. Chapter title
-  tl.to(els.chapterTitle, { opacity: 1, x: 0, duration: 0.45 }, '+=0.15');
+  tl.to(els.chapterTitle, { opacity: 1, x: 0, duration: 0.4 }, '+=0.12');
 
   // 11. Story — typewriter with cursor
   tl.call(() => {
     gsap.set(els.chapterBody, { opacity: 1 });
     typeWriter(els.chapterBody, storyText, 22);
-  }, [], '+=0.3');
+  }, [], '+=0.25');
 
   return tl;
 }
