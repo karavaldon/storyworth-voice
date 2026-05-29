@@ -303,7 +303,7 @@
     }
   }
 
-  if (!customElements.get('ways-to-record-mobile')) {
-    customElements.define('ways-to-record-mobile', WaysToRecordMobile);
+  if (!customElements.get('ways-to-record-mobile-v2')) {
+    customElements.define('ways-to-record-mobile-v2', WaysToRecordMobile);
   }
 })();

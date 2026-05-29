@@ -295,7 +295,7 @@
     }
   }
 
-  if (!customElements.get('ways-to-record')) {
-    customElements.define('ways-to-record', WaysToRecord);
+  if (!customElements.get('ways-to-record-v2')) {
+    customElements.define('ways-to-record-v2', WaysToRecord);
   }
 })();
