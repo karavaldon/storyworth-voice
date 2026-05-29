@@ -281,19 +281,21 @@
       intro.to(els.daughter, { opacity: 1, y: 0, duration: 0.5 }, '-=0.35');
       intro.to(els.bg,       { opacity: 1, y: 0, duration: 0.5 }, '-=0.3');
 
-      /* ── card loop function ── */
+      /* ── card sequence — plays through once, stops on card 3 ── */
       const cycleCard = (idx) => {
         const card = cards[idx];
         const bar  = bars[idx];
-        const next = (idx + 1) % 3;
+        const isLast = idx === 2;
 
         const tl = g.timeline({ defaults: { ease: 'power2.out' } });
         g.set(card, { x: CARD_W });
         tl.to(card, { opacity: 1, x: 0, duration: PUSH_DUR, ease: 'power2.out' });
         tl.to(bar, { scaleX: 1, duration: CARD_DURATION, ease: 'none' }, '+=0.05');
-        tl.to(card, { x: -CARD_W, opacity: 0, duration: PUSH_DUR, ease: 'power2.in' });
-        tl.set(bar, { scaleX: 0 });
-        tl.call(() => { cycleCard(next); });
+        if (!isLast) {
+          tl.to(card, { x: -CARD_W, opacity: 0, duration: PUSH_DUR, ease: 'power2.in' });
+          tl.set(bar, { scaleX: 0 });
+          tl.call(() => { cycleCard(idx + 1); });
+        }
 
         this._cardTl = tl;
         return tl;

@@ -285,13 +285,8 @@
         /* card 3 — 0.8s after card 2 */
         tl.to(els.card3, { opacity: 1, x: 0, duration: 0.35, ease: 'back.out(1.3)' }, '+=0.8');
 
-        /* hold, then loop */
-        tl.call(() => {
-          setTimeout(() => {
-            if (this._tl) this._tl.kill();
-            this._tl = build();
-          }, 3500);
-        }, [], '+=1.8');
+        /* hold on final state */
+        tl.to({}, { duration: 1.8 });
 
         return tl;
       };
