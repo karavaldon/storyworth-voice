@@ -2,7 +2,7 @@
   'use strict';
 
   const FRAME_W = 400;
-  const FRAME_H = 681;
+  const FRAME_H = 400;
 
   const CDN = 'https://cdn.jsdelivr.net/gh/karavaldon/storyworth-voice@main/assets';
 
@@ -43,14 +43,6 @@
       background: none;
     }
 
-    /* ── Background photo ── */
-    .bg-image {
-      position: absolute;
-      left: -0.5px;
-      top: 395.41px;
-      width: 401px;
-      height: auto;
-    }
 
     /* ── Dad portrait: x=25.38, y=28.71, 228.94×228.94, r=20 ── */
     .dad-wrap {
@@ -153,7 +145,6 @@
       <div class="scale-wrap">
         <div class="frame">
 
-          <img class="bg-image" id="wtrm-bg" src="${ap}/mom-dad-mobile.png" alt="" />
 
           <div class="dad-wrap" id="wtrm-dad">
             <video id="wtrm-vid-dad" src="${dadSrc}" autoplay muted playsinline></video>
@@ -251,7 +242,6 @@
       const $ = id => shadow.getElementById(id);
 
       const els = {
-        bg:       $('wtrm-bg'),
         dad:      $('wtrm-dad'),
         daughter: $('wtrm-daughter'),
         rec:      $('wtrm-rec'),
@@ -270,16 +260,15 @@
 
       /* ── intro: portraits + bg fade in once ── */
       const intro = g.timeline({ defaults: { ease: 'power2.out' } });
-      g.set([els.bg, els.dad, els.daughter, els.rec,
+      g.set([els.dad, els.daughter, els.rec,
              els.card1, els.card2, els.card3], { opacity: 0 });
-      g.set([els.dad, els.daughter, els.bg, els.rec], { y: 14 });
+      g.set([els.dad, els.daughter, els.rec], { y: 14 });
       g.set(cards, { x: CARD_W });
       g.set(bars, { scaleX: 0 });
 
       intro.to(els.dad,      { opacity: 1, y: 0, duration: 0.5 });
       intro.to(els.rec,      { opacity: 1, y: 0, duration: 0.5 }, '-=0.5');
       intro.to(els.daughter, { opacity: 1, y: 0, duration: 0.5 }, '-=0.35');
-      intro.to(els.bg,       { opacity: 1, y: 0, duration: 0.5 }, '-=0.3');
 
       /* ── card loop — cycles 1→2→3→1→2→3 continuously ── */
       const cycleCard = (idx) => {
