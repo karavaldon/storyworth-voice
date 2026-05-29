@@ -292,7 +292,7 @@
     }
   }
 
-  if (!customElements.get('ways-to-record-mobile-v2')) {
-    customElements.define('ways-to-record-mobile-v2', WaysToRecordMobile);
+  if (!customElements.get('ways-to-record-mobile-v3')) {
+    customElements.define('ways-to-record-mobile-v3', WaysToRecordMobile);
   }
 })();
