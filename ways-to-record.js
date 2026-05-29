@@ -114,8 +114,8 @@
     /* ── Curly phone cord: tx=64.7, ty=402.08, rot=9.85° ── */
     .cord {
       position: absolute;
-      left: 64.7px;
-      top: 402.08px;
+      left: 86.7px;
+      top: 412.08px;
       width: 98.68px;
       height: 73.14px;
       transform-origin: 0 0;

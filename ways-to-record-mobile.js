@@ -122,8 +122,8 @@
     /* ── Phone cord: x=264.54, y=47.31, 82.23×98.79 ── */
     .cord {
       position: absolute;
-      left: 264.54px;
-      top: 47.31px;
+      left: 266.54px;
+      top: 44.31px;
       width: 82.23px;
       height: 98.79px;
       z-index: 6;
