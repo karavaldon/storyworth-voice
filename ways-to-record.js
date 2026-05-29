@@ -143,7 +143,7 @@
 
   `;
 
-  function buildHTML(ap) {
+  function buildHTML(ap, dadSrc, daughterSrc) {
     return `
       <div class="scale-wrap">
         <div class="frame">
@@ -151,14 +151,14 @@
           <!-- Background photo -->
           <img class="bg-image" id="wtr-bg" src="${ap}/mom-dad.png" alt="" />
 
-          <!-- Dad portrait — dad2.mp4 -->
+          <!-- Dad portrait — dad3.mp4 -->
           <div class="dad-wrap" id="wtr-dad">
-            <video id="wtr-vid-dad" src="${ap}/dad3.mp4" autoplay muted playsinline></video>
+            <video id="wtr-vid-dad" src="${dadSrc}" autoplay muted playsinline></video>
           </div>
 
           <!-- Daughter portrait — daughter.mp4, flipped -->
           <div class="daughter-wrap" id="wtr-daughter">
-            <video id="wtr-vid-daughter" src="${ap}/daughter.mp4" autoplay muted playsinline></video>
+            <video id="wtr-vid-daughter" src="${daughterSrc}" autoplay muted playsinline></video>
           </div>
 
           <!-- Card 1: Family Calls -->
@@ -190,6 +190,8 @@
     connectedCallback() {
       injectFonts();
       const ap = this.getAttribute('asset-path') || CDN;
+      const dadSrc = this.getAttribute('dad-src') || `${ap}/dad3.mp4`;
+      const daughterSrc = this.getAttribute('daughter-src') || `${ap}/daughter.mp4`;
       const shadow = this.attachShadow({ mode: 'open' });
 
       const style = document.createElement('style');
@@ -197,7 +199,7 @@
       shadow.appendChild(style);
 
       const tmp = document.createElement('div');
-      tmp.innerHTML = buildHTML(ap);
+      tmp.innerHTML = buildHTML(ap, dadSrc, daughterSrc);
       while (tmp.firstChild) shadow.appendChild(tmp.firstChild);
 
       this._setupVideos(shadow);

@@ -148,7 +148,7 @@
     .rec-dot { animation: rec-glow 1.4s ease-in-out infinite; }
   `;
 
-  function buildHTML(ap) {
+  function buildHTML(ap, dadSrc, daughterSrc) {
     return `
       <div class="scale-wrap">
         <div class="frame">
@@ -156,11 +156,11 @@
           <img class="bg-image" id="wtrm-bg" src="${ap}/mom-dad-mobile.png" alt="" />
 
           <div class="dad-wrap" id="wtrm-dad">
-            <video id="wtrm-vid-dad" src="${ap}/dad3.mp4" autoplay muted playsinline></video>
+            <video id="wtrm-vid-dad" src="${dadSrc}" autoplay muted playsinline></video>
           </div>
 
           <div class="daughter-wrap" id="wtrm-daughter">
-            <video id="wtrm-vid-daughter" src="${ap}/daughter.mp4" autoplay muted playsinline></video>
+            <video id="wtrm-vid-daughter" src="${daughterSrc}" autoplay muted playsinline></video>
           </div>
 
           <div class="card" id="wtrm-card1">
@@ -188,6 +188,8 @@
     connectedCallback() {
       injectFonts();
       const ap = this.getAttribute('asset-path') || CDN;
+      const dadSrc = this.getAttribute('dad-src') || `${ap}/dad3.mp4`;
+      const daughterSrc = this.getAttribute('daughter-src') || `${ap}/daughter.mp4`;
       const shadow = this.attachShadow({ mode: 'open' });
 
       const style = document.createElement('style');
@@ -195,7 +197,7 @@
       shadow.appendChild(style);
 
       const tmp = document.createElement('div');
-      tmp.innerHTML = buildHTML(ap);
+      tmp.innerHTML = buildHTML(ap, dadSrc, daughterSrc);
       while (tmp.firstChild) shadow.appendChild(tmp.firstChild);
 
       this._setupVideos(shadow);
