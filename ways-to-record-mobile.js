@@ -124,10 +124,10 @@
     /* ── Recording dot: x=202, y=48.54, 33.18×33.18 ── */
     .rec-dot {
       position: absolute;
-      left: 202px;
+      left: 212px;
       top: 48.54px;
-      width: 33.18px;
-      height: 33.18px;
+      width: 21.18px;
+      height: 21.18px;
       border-radius: 50%;
       background: #F6734D;
       border: 3px solid #fff;
@@ -167,7 +167,7 @@
             <div class="card-progress"></div>
           </div>
 
-          <img class="cord" id="wtrm-cord" src="${ap}/wtr-cord-mobile-v2.svg" alt="" />
+          <img class="cord" id="wtrm-cord" src="${ap}/wtr-cord-mobile-v3.svg" alt="" />
 
           <div class="rec-dot" id="wtrm-rec"></div>
         </div>
