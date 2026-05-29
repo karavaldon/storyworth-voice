@@ -176,7 +176,7 @@
             <div class="card-progress"></div>
           </div>
 
-          <img class="cord" id="wtrm-cord" src="${ap}/wtr-cord-mobile.svg" alt="" />
+          <img class="cord" id="wtrm-cord" src="${ap}/wtr-cord-mobile-v2.svg" alt="" />
 
           <div class="rec-dot" id="wtrm-rec"></div>
         </div>

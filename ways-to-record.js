@@ -177,7 +177,7 @@
           </div>
 
           <!-- Curly phone cord -->
-          <img class="cord" id="wtr-cord" src="${ap}/wtr-cord.svg" alt="" />
+          <img class="cord" id="wtr-cord" src="${ap}/wtr-cord-v2.svg" alt="" />
 
           <!-- Recording indicator -->
           <div class="rec-dot" id="wtr-rec"></div>
