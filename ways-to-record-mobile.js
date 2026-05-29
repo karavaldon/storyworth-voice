@@ -204,11 +204,25 @@
       this._ro = new ResizeObserver(() => this._updateScale(shadow));
       this._ro.observe(this);
       this._updateScale(shadow);
-      loadGSAP(() => this._runAnimation(shadow));
+
+      loadGSAP(() => {
+        this._io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              if (!this._tl) this._runAnimation(shadow);
+            } else {
+              if (this._cardTl) { this._cardTl.kill(); this._cardTl = null; }
+              if (this._tl) { this._tl.kill(); this._tl = null; }
+            }
+          });
+        }, { threshold: 0.3 });
+        this._io.observe(this);
+      });
     }
 
     disconnectedCallback() {
       if (this._ro) this._ro.disconnect();
+      if (this._io) this._io.disconnect();
       if (this._tl) this._tl.kill();
       if (this._cardTl) this._cardTl.kill();
     }
