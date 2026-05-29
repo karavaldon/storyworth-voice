@@ -111,15 +111,15 @@
     #wtr-card2 { top: 237.0px; }
     #wtr-card3 { top: 341.9px; }
 
-    /* ── Curly phone cord (node 'Vector 9782', x=64.7, y=402.1, rotated ~9.84°) ── */
+    /* ── Curly phone cord: tx=64.7, ty=402.08, rot=9.85° ── */
     .cord {
       position: absolute;
-      left: 80.7px;
-      top: 410.1px;
-      width: 134px;
-      height: 80px;
+      left: 64.7px;
+      top: 402.08px;
+      width: 98.68px;
+      height: 73.14px;
       transform-origin: 0 0;
-      transform: rotate(9.84deg);
+      transform: rotate(9.85deg);
       z-index: 6;
     }
 

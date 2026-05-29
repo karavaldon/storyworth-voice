@@ -119,13 +119,13 @@
       z-index: 2;
     }
 
-    /* ── Phone cord: x=265.74, y=72.17, 48.5×71.07 ── */
+    /* ── Phone cord: x=264.54, y=47.31, 82.23×98.79 ── */
     .cord {
       position: absolute;
-      left: 271.74px;
-      top: 72.17px;
-      width: 48.5px;
-      height: 71.07px;
+      left: 264.54px;
+      top: 47.31px;
+      width: 82.23px;
+      height: 98.79px;
       z-index: 6;
     }
 
