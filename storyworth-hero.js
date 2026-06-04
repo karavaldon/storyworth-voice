@@ -76,12 +76,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     img { display: block; }
 
-    :host { display: block; width: 100%; }
+    :host { display: block; width: 100%; padding: 0; text-align: left; }
 
     .scale-wrap {
       position: relative;
       width: 100%;
-      overflow: hidden;
+      overflow: visible;
+      padding-bottom: 24px;
     }
 
     .frame {
@@ -325,11 +326,11 @@
     }
 
     _updateScale(shadow) {
-      const w = this.getBoundingClientRect().width || FRAME_W;
+      const wrap = shadow.querySelector('.scale-wrap');
+      const w = (wrap && wrap.getBoundingClientRect().width) || FRAME_W;
       const scale = w / FRAME_W;
       const frame = shadow.querySelector('.frame');
       if (frame) frame.style.transform = `scale(${scale})`;
-      const wrap = shadow.querySelector('.scale-wrap');
       if (wrap) wrap.style.height = (FRAME_H * scale) + 'px';
     }
 
