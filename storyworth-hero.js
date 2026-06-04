@@ -89,6 +89,7 @@
       width: ${FRAME_W}px;
       height: ${FRAME_H}px;
       transform-origin: top left;
+      text-align: left;
     }
 
     .label {
