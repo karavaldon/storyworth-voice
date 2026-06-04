@@ -99,14 +99,12 @@
       font-size: 20px;
       color: #1e1e1e;
       white-space: nowrap;
-      text-align: center;
       line-height: normal;
-      transform: translateX(-50%);
     }
 
-    .label--talk   { left: 219.01px; top: 0;       transform: none; text-align: left; }
-    .label--family { left: 219.01px; top: 29.33px; transform: none; text-align: left; }
-    .label--write  { left: 533.2px;  top: 113.08px; }
+    .label--talk   { left: 219.01px; top: 0; }
+    .label--family { left: 219.01px; top: 29.33px; }
+    .label--write  { left: 533.2px;  top: 113.08px; transform: translateX(-50%); text-align: center; }
 
     .glow {
       position: absolute;
