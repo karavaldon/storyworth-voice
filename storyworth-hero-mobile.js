@@ -195,7 +195,7 @@
     /* ── Glow (screen 2) ─────────────────────────────────────── */
     .glow {
       position: absolute;
-      left: -103.77px; top: -62.93px;
+      left: -103.77px; top: -122.93px;
       width: 715.509px; height: 715.509px;
       pointer-events: none;
     }
