@@ -103,8 +103,8 @@
       transform: translateX(-50%);
     }
 
-    .label--talk   { left: 219.01px; top: 0; }
-    .label--family { left: 248.51px; top: 29.33px; }
+    .label--talk   { left: 219.01px; top: 0;       transform: none; text-align: left; }
+    .label--family { left: 219.01px; top: 29.33px; transform: none; text-align: left; }
     .label--write  { left: 533.2px;  top: 113.08px; }
 
     .glow {
