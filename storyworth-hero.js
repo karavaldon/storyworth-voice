@@ -326,7 +326,7 @@
 
     _updateScale(shadow) {
       const w = this.getBoundingClientRect().width || FRAME_W;
-      const scale = Math.min(1, w / FRAME_W);
+      const scale = w / FRAME_W;
       const frame = shadow.querySelector('.frame');
       if (frame) frame.style.transform = `scale(${scale})`;
       const wrap = shadow.querySelector('.scale-wrap');
