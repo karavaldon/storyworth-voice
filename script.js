@@ -150,10 +150,6 @@ function buildTimeline() {
 
 let tl = buildTimeline();
 
-document.getElementById('replay-btn').addEventListener('click', () => {
-  tl.kill();
-  tl = buildTimeline();
-});
 
 // Dad video: loop starting from 3s
 const dadVideo = document.getElementById('dad-video');
