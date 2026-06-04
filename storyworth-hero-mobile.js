@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  const CDN = 'https://cdn.jsdelivr.net/gh/karavaldon/storyworth-voice@main/assets';
+
   const FRAME_W = 400;
   const FRAME_H = 567;
 
@@ -256,7 +258,7 @@
 
   `;
 
-  function buildHTML(ap) {
+  function buildHTML(ap, dadSrc, daughterSrc) {
     return `
       <div class="scale-wrap">
         <div class="frame">
@@ -276,10 +278,10 @@
             </svg>
 
             <div class="portrait-wrap portrait-wrap--daughter" id="daughter">
-              <video src="${ap}/daughter.mp4" id="daughter-video" autoplay muted playsinline></video>
+              <video src="${daughterSrc}" id="daughter-video" autoplay muted playsinline></video>
             </div>
             <div class="portrait-wrap portrait-wrap--dad" id="portrait">
-              <video src="${ap}/dad.mp4" id="dad-video" autoplay muted playsinline></video>
+              <video src="${dadSrc}" id="dad-video" autoplay muted playsinline></video>
             </div>
 
             <div class="phone-card" id="phone-card"></div>
@@ -308,7 +310,9 @@
   class StoryworthHeroMobile extends HTMLElement {
     connectedCallback() {
       injectFonts();
-      const ap = this.getAttribute('asset-path') || './assets';
+      const ap = this.getAttribute('asset-path') || CDN;
+      const dadSrc = this.getAttribute('dad-src') || `${ap}/dad.mp4`;
+      const daughterSrc = this.getAttribute('daughter-src') || `${ap}/daughter.mp4`;
       const shadow = this.attachShadow({ mode: 'open' });
 
       const style = document.createElement('style');
@@ -316,7 +320,7 @@
       shadow.appendChild(style);
 
       const tmp = document.createElement('div');
-      tmp.innerHTML = buildHTML(ap);
+      tmp.innerHTML = buildHTML(ap, dadSrc, daughterSrc);
       while (tmp.firstChild) shadow.appendChild(tmp.firstChild);
 
       this._setupVideos(shadow);
