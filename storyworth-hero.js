@@ -400,7 +400,7 @@
     }
   }
 
-  if (!customElements.get('storyworth-hero-v2')) {
-    customElements.define('storyworth-hero-v2', StoryworthHero);
+  if (!customElements.get('storyworth-hero-v3')) {
+    customElements.define('storyworth-hero-v3', StoryworthHero);
   }
 })();
