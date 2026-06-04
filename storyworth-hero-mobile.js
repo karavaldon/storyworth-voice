@@ -193,13 +193,6 @@
     #bubble-3  { left: 127.46px; top: 455.51px; width: 230.65px; }
 
     /* ── Glow (screen 2) ─────────────────────────────────────── */
-    .glow {
-      position: absolute;
-      left: -103.77px; top: -122.93px;
-      width: 715.509px; height: 715.509px;
-      pointer-events: none;
-    }
-
     /* ── Chapter card / screen (screen 2) ────────────────────── */
     .chapter-card {
       position: absolute;
@@ -294,7 +287,6 @@
 
           <!-- ── Screen 2: mobile 2 (chapter side) ───────────── -->
           <div class="screen" id="screen-2">
-            <img class="glow" id="glow" src="${ap}/glow.svg" alt="" />
             <p class="label label--write" id="lbl-write">We write a chapter</p>
             <div class="chapter-card" id="chapter-card"></div>
             <div class="chapter-page" id="chapter-page">
@@ -386,7 +378,6 @@
         bubble2:      $('bubble-2'),
         bubble3:      $('bubble-3'),
         // Screen 2
-        glow:         $('glow'),
         lblWrite:     $('lbl-write'),
         chapterCard:  $('chapter-card'),
         chapterPage:  $('chapter-page'),
@@ -405,7 +396,7 @@
         g.set([
           els.lblTalk, els.lblFamily, els.audioWave, els.phoneCard,
           els.portrait, els.daughter, els.bubble1, els.bubble2, els.bubble3,
-          els.glow, els.lblWrite, els.chapterCard, els.chapterPage,
+          els.lblWrite, els.chapterCard, els.chapterPage,
           els.chapterTitle, els.chapterBody,
         ], { opacity: 0 });
 
@@ -435,7 +426,6 @@
         tl.to(els.chapterCard,  { opacity: 1, y: 0, duration: 0.5 }, '-=0.2');
         tl.to(els.chapterPage,  { opacity: 1, y: 0, duration: 0.5 }, '<');
         tl.to(els.chapterTitle, { opacity: 1, y: 0, duration: 0.5 }, '<');
-        tl.to(els.glow,         { opacity: 0.6, duration: 0.8 }, '<');
         tl.call(() => {
           g.set(els.chapterBody, { opacity: 1 });
           typeWriter(els.chapterBody, storyText, 12, () => {
